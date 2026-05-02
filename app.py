@@ -28,9 +28,8 @@ def encode_image_to_base64(image_path):
 st.set_page_config(page_title='Tablero Inteligente')
 st.title('Tablero Inteligente')
 with st.sidebar:
-    st.subheader("Acerca de:")
-    st.subheader("En esta aplicación veremos la capacidad que ahora tiene una máquina de interpretar un boceto")
-st.subheader("Dibuja el boceto en el panel  y presiona el botón para analizarla")
+  
+st.subheader("Dibuja en el tablero y deja que lo analicemos")
 
 # Add canvas component
 #bg_image = st.sidebar.file_uploader("Cargar Imagen:", type=["png", "jpg"])
@@ -68,7 +67,7 @@ api_key = os.environ['OPENAI_API_KEY']
 # Initialize the OpenAI client with the API key
 client = OpenAI(api_key=api_key)
 
-analyze_button = st.button("Analiza la imagen", type="secondary")
+analyze_button = st.button("Analizar", type="secondary")
 
 # Check if an image has been uploaded, if the API key is available, and if the button has been pressed
 if canvas_result.image_data is not None and api_key and analyze_button:
@@ -138,4 +137,4 @@ else:
     # Warnings for user action required
 
     if not api_key:
-        st.warning("Por favor ingresa tu API key.")
+        st.warning("Ya ingresaste tu API key?")
